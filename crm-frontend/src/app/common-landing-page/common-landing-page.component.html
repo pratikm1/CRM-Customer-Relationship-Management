@@ -1,0 +1,105 @@
+<!-- <app-navbar></app-navbar> -->
+<section id="banner">
+  <div>
+  </div>
+  <div class="banner-text">
+    <h1>Customer Relationship Management</h1>
+    <p>We Starve For Perfection...!</p>
+    <div class="banner-btn">
+      <a routerLink="/login"><span></span>Login</a>
+      <a routerLink="/register"><span></span>Register</a>
+    </div>
+  </div>
+</section>
+
+<section class="bikes-collection">
+  <div class="title-text">
+    <p>We Present You</p>
+    <h1>Our Collection</h1>
+  </div>
+  <div class="testimonial-row">
+    <div class="testimonial-col" *ngFor="let vehicle of vehicleList">
+      <div class="user">
+        <div class="user-info">
+          <div class="card" style="width: 32rem;">
+            <img class="card-img-top" width="600px" height="200px" src="data:image/jpeg;base64,{{ vehicle.image }}"
+              alt="Image Name:{{ vehicle.modelName }}">
+            <div class="card-body">
+              <h5 class="card-title h2">{{vehicle.modelName}}</h5>
+              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p> -->
+
+              <table class="table table-striped table-hover">
+                <tbody>
+                  <tr>
+                    <th scope="row">Model</th>
+                    <td>{{ vehicle.modelName }}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Mileage</th>
+                    <td>{{vehicle.mileage}} Km/ltr</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">CC</th>
+                    <td>{{vehicle.cc}} CC</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Torque</th>
+                    <td>{{vehicle.torque}} Nm</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Ex-showroom Price</th>
+                    <td>Rs. {{vehicle.exShowRoomPrice}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">On Road price</th>
+                    <td>Rs. {{vehicle.price}}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!-- *ngFor="let vehicle of vehicleList" -->
+              <div class="card-body">
+                <a routerLink="/book-vehicle" class="btn btn-primary card-link">Book Now</a>
+                <a routerLink="/get-quote" class="btn btn-primary card-link">Get Quotation</a>
+              </div>
+            </div>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="offers=list">
+  <div class="title-text">
+    <p>Here Are Best Offers for You</p>
+    <h1></h1>
+  </div>
+  <div class="testimonial-row" style="margin-left: 15%;">
+    <div class="testimonial-col" *ngFor="let offer of offersList">
+      <div class="user">
+        <div class="user-info">
+          <div class="card" style="width: 100rem;">
+            <img class="card-img-top" src="data:image/jpeg;base64,{{ offer.offerImage }}"
+              alt="Image Name:{{ offer.offerName }}">
+              <h5 class="card-title h2">{{ offer.offerName}}</h5>
+            <div class="card-body">
+              <!-- <a routerLink="/book-vehicle" class="btn btn-primary card-link">Book Now</a>
+              <a routerLink="/get-quote" class="btn btn-primary card-link">Get Quotation</a> -->
+            </div>
+
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="footer">
+  <app-footer></app-footer>
+</section>

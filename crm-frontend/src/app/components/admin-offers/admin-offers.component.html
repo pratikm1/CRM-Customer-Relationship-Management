@@ -1,0 +1,66 @@
+<!-- 
+     {
+        "offerId": 1,
+        "offerName": "WASHING DISCOUNT",
+        "offerDesc": "GET 30% discount on subsequent servicings",
+        "offerDiscountPercentage": 30.0,
+        "startDate": "2021-10-01",
+        "endDate": "2021-10-31",
+        "offerImage": ""
+    }
+    
+ -->
+ <div class="col">
+<div class="col-md-2">
+    <app-admin-home></app-admin-home>
+</div>
+<div class="col-md-10" style="margin-top: 10%;">
+    <!-- Search By 
+    <select ng-model="columns" ng-options="e for e in offersListKeys">
+        <option value=""></option>
+    </select> -->
+    <!-- <select name="" id="" *ngFor="let key of offersListKeys">
+        <option value="{{ key }}" >{{ key }}</option>
+    </select> -->
+
+    <button type="button" [routerLink]="['/admin-add-new-offer']" style="margin-bottom: 20px;"
+        class="btn btn-primary float-right"><span class="glyphicon glyphicon-plus"></span> Add Offer</button>
+
+    <table class="table table-striped table-hover table-bordered">
+        <thead>
+            <tr>
+                <!-- Find logic to perform bulk operations using checkbox -->
+                <th scope="col">Offer ID</th>
+                <th scope="col">Offer Name</th>
+                <th scope="col">Offer Description</th>
+                <th scope="col">Offer Discount</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">End Date</th>
+                <th scope="col">Offer Image</th>
+                <th colspan="2" style="text-align:center">Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr scope="row" *ngFor="let offer of offersList | paginate: { id:'listing', itemsPerPage:5,
+            currentPage: page }">
+                <td>{{ offer.offerId }}</td>
+                <td>{{ offer.offerName }}</td>
+                <td>{{ offer.offerDesc }}</td>
+                <td>{{ offer.offerDiscountPercentage }}</td>
+                <td>{{ offer.startDate }}</td>
+                <td>{{ offer.endDate }}</td>
+                <td><img width="200px" height="100px" src="data:image/jpeg;base64,{{ offer.offerImage }}" alt="Image Name:{{ offer.offerName }}"></td>
+                <div style="box-sizing: border-box;">
+                <td><button type="button" (click)="removeOffer(offer.offerId)" class="btn btn-danger glyphicon glyphicon-trash"></button>
+                </td>
+                <td><button type="button" (click)="updateOfferDetails(offer)" class="btn btn-warning glyphicon glyphicon-pencil"></button></td>
+          </div>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <pagination-controls id="listing" maxSize="10" directionLinks="true" (pageChange)="page=$event">
+        </pagination-controls>
+    </div>
+</div>
+</div>

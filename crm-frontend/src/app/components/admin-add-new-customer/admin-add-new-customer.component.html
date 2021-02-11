@@ -1,0 +1,102 @@
+<div class="col">
+<div class="col-md-2">
+    <app-admin-home></app-admin-home>
+</div>
+<div class="col-md-10 top-margin-div">
+
+    <form #myform="ngForm" (ngSubmit)="addNewCustomer(myform.value)" class="form-border">
+        <div class="row">
+            <legend class="form-legend">Add New Customer</legend>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Full Name">Full Name:</label>
+                    <input type="text" class="form-control" #username="ngModel" name="username" ngModel placeholder="Enter Full Name" required>
+                    <small> <span class="text-danger" *ngIf="username.invalid && username.touched">Username is must</span></small>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Mobile Number">Mobile Number:</label>
+                    <input type="tel" class="form-control" #phoneNumber="ngModel" name="phoneNumber" ngModel
+                        placeholder="Enter Mobile Number" pattern="[0-9]{10}"  required>
+                        <small> <span class="text-danger" *ngIf="phoneNumber.invalid && phoneNumber.touched">Phone number is required & should be of 10 digits</span></small>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Email Id">Email Id:</label>
+                    <input type="email" class="form-control" #email="ngModel" pattern="[^ @]*@[^ @]*.com" name="email" ngModel placeholder="Enter Email Id" required>
+                    <small> <span class="text-danger" *ngIf="email.invalid && email.touched">Enter correct Email</span></small>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Address">Address:</label>
+                    <input type="text" class="form-control" #address="ngModel" name="address" ngModel placeholder="Enter Address" required>
+                    <small> <span class="text-danger" *ngIf="address.invalid && address.touched">Address is must</span></small>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" class="form-control" name="dob" ngModel placeholder="Enter Date of Birth">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="State">State:</label>
+                    <input type="text" class="form-control" name="state" ngModel placeholder="Enter State">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="City">City:</label>
+                    <input type="text" class="form-control" name="city" ngModel placeholder="Enter City">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Pincode">Pincode:</label>
+                    <input type="text" class="form-control" #pincode="ngModel" pattern="[0-9]{6}" name="pincode" ngModel placeholder="Enter Pincode">
+                    <small> <span class="text-danger" *ngIf="pincode.invalid && pincode.touched">Pincode must be of 6 digits</span></small>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Password">Password:</label>
+                    <input type="password" class="form-control" name="password" #password="ngModel" minlength="8" maxlength="12" ngModel placeholder="Enter Password" required>
+                    <small><span class="text-danger" *ngIf="password.invalid && password.touched">Password min length 8 and max length
+                        12</span></small>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <!-- <input type="hidden" class="form-control" name="role" ngModel value="CUSTOMER"> -->
+                    <label for="role">Choose Role:</label>
+                    <select id="role" class="form-select form-control" #role="ngModel" name="role" ngModel required>
+                        <option value="ADMIN">ADMIN</option>
+                        <option value="CUSTOMER">CUSTOMER</option>
+                    </select>
+                    <small><span class="text-danger" *ngIf="role.invalid && role.touched">Choose a role</span></small> 
+
+                </div>
+                <span class="text-danger">{{message}}</span>
+            </div>
+            
+        </div>
+        <p style="text-align: right;"><button type="submit" [disabled]="!myform.form.valid" class="btn btn-primary">Submit</button></p>
+    </form>
+</div>
+</div>
+
+<!-- <app-register></app-register> -->

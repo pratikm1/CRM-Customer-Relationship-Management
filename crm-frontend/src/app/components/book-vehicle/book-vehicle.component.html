@@ -1,0 +1,85 @@
+<!-- 
+    {
+        "bookedVehicleDetails": {
+            "vehicleId": 3
+        },
+        "availableOffers":{
+            "offerId":1
+        },
+        "customerNewBooking":{
+            "userId":1
+        },
+        "bookingDate": "2021-10-02"
+}
+ -->
+ <div class="row">
+ <div class="col">
+     <div class="col">
+        <app-customer-home></app-customer-home>
+     </div>
+ <div class="px-md-5 col-md-6 float-right top-margin-div-customer" style="margin-left: 8%; margin-top: -11%;" *ngIf="vehicleBooked==false">
+<form (ngSubmit)="bookVehicle(myform.value)" #myform="ngForm" class="form-border">
+    <div class="row">
+        <legend class="form-legend">Book Vehicle</legend>
+        <div class="form-group col-md-12">
+            <label for="bookingDate">Booking Date</label>
+            <input type="date" name="bookingDate" ngModel class="form-control"
+                placeholder="Enter required booking date" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-12">
+            <label for="vehicleId">Select your vehicle</label>
+            <select  id="vehicleId" class="form-control" aria-label="Default select example" name="vehicleId" ngModel required>
+                <option *ngFor="let y of vehicleList" value="{{ y.vehicleId }}">{{ y.modelName }}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-md-12">
+            <label for="offerId">Available Offers</label>
+            <select id="offerId" class="form-control" aria-label="Default select example" name="offerId" ngModel>
+                <option *ngFor="let offers of offersList" value="{{ offers.offerId }}">{{ offers.offerName }} - {{ offers.offerDesc }}</option>
+            </select>
+        </div>
+    </div>
+
+    <div>
+        <input type="submit" class="btn btn-primary leftalign" [disabled]="!myform.form.valid" value="Submit">
+        <input class="btn btn-secondary leftalign" type="reset" value="Reset">
+    </div>
+</form>
+
+
+
+<div class="container" *ngIf="vehicleBooked==true">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">Vehicle Booked successfully!</h1>
+          <p class="lead">Your vehicle has been booked successfully. Have fun! </p>
+          <button routerLink="/customer-home" class="btn btn-link leftalign">Back to Home</button>
+        </div>
+      </div>
+</div>
+</div>
+
+</div>
+</div>
+<div>
+    <div class="container" *ngIf="vehicleBooked==true">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+              <h1 class="display-4">Vehicle Booked successfully!</h1>
+              <p class="lead">Your vehicle has been booked successfully. Have fun! </p>
+              <button routerLink="/customer-home" class="btn btn-link leftalign">Back to Home</button>
+            </div>
+          </div>
+    </div>
+</div>
+
+<div class="row top-margin-div">
+<div class="col">
+    <app-footer></app-footer>
+</div>
+</div>

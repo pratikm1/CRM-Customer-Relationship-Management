@@ -1,0 +1,53 @@
+<div class="col">
+    <div class="col-md-2">
+        <app-admin-home></app-admin-home>
+    </div>
+
+<div class="col-md-10 top-margin-div">
+    <button type="button" [routerLink]="['/admin-add-new-customer']" style="margin-bottom: 20px; float: right;"
+        class="btn btn-primary "><span class="glyphicon glyphicon-plus"></span>Add New Customer</button>
+    <!--     <button type="button" [routerLink]="['/admin-add-new-vehicle']" style="margin-bottom: 20px;" class="btn btn-primary float-right"><span class="glyphicon glyphicon-plus"></span> Add Vehcile</button>
+ --><button type="button" (click)="messageToALl()" class="btn btn-primary sendAllButton">
+        <span class="glyphicon glyphicon-envelope"></span> Send Message To All</button>
+    <table class="table table-striped table-hover table-bordered ">
+        <tr>
+            <!-- Find logic to perform bulk operations using checkbox -->
+            <!-- <th scope="col" style="text-align:center"><input type="checkbox" name="x" id="x"></th> -->
+            <th scope="col" style="text-align:center">User Id</th>
+            <th scope="col" style="text-align:center">Name</th>
+            <th scope="col" style="text-align:center">Email</th>
+            <th scope="col" style="text-align:center">Address</th>
+            <th scope="col" style="text-align:center">City</th>
+            <th scope="col" style="text-align:center">State</th>
+            <th scope="col" style="text-align:center">Pincode</th>
+            <th scope="col" style="text-align:center">Date Of Birth</th>
+            <th scope="col" style="text-align:center">Phone Number</th>
+            <th scope="col" class="col-md-1">Operations</th>
+        </tr>
+        <tbody>
+            <tr scope="row" *ngFor="let customer of customerList | paginate: { id:'listing', itemsPerPage:5,
+                currentPage: page }">
+                <!-- <td><input type="checkbox" name="x" id="x"></td> -->
+                <td>{{ customer.userId }}</td>
+                <td>{{ customer.username }}</td>
+                <td>{{ customer.email }}</td>
+                <td>{{ customer.address }}</td>
+                <td>{{ customer.city }}</td>
+                <td>{{ customer.state }}</td>
+                <td>{{ customer.pincode }}</td>
+                <td>{{ customer.dob }}</td>
+                <td>{{ customer.phoneNumber }}</td>
+                <div style="box-sizing: border-box;">
+                    <td><button type="button" (click)="removeCustomer(customer.userId)"class="btn btn-danger glyphicon glyphicon-trash"></button></td>
+                    <td><button type="button" (click)="updateCustomerDetails(customer)" class="btn btn-warning glyphicon glyphicon-pencil"></button></td>
+                    <!-- <td><button type="button" class="btn btn-primary glyphicon glyphicon-envelope"></button></td> -->
+                </div>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <pagination-controls id="listing" maxSize="10" directionLinks="true" (pageChange)="page=$event">
+        </pagination-controls>
+    </div>
+</div>
+</div>

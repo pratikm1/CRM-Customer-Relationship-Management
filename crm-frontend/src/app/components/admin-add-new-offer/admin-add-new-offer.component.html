@@ -1,0 +1,77 @@
+<!-- 
+   {
+        "offerName": "test",
+        "offerDesc": "testing purpose",
+        "offerDiscountPercentage": 20.0,
+        "startDate": "2021-10-01",
+        "endDate": "2021-10-31",
+        "offerImage": ""
+    }
+    
+ -->
+ <div class="col">
+    <div class="col-md-2">
+        <app-admin-home></app-admin-home>
+    </div>
+
+<div class="col-md-10 top-margin-div">
+    
+    <form #myform="ngForm" (ngSubmit)="addNewOffer2(myform.value)" class="form-border">
+        <div class="row">
+            <legend class="form-legend">Add New Offer</legend>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="offerName">Offer Name</label>
+                    <input type="text" class="form-control" #name="ngModel" name="offerName" ngModel placeholder="Enter offer Name"
+                        required>
+                        <small> <span class="text-danger" *ngIf="name.invalid && name.touched">Offer name is must & should be unique</span></small>
+                    
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="offerDesc">Describe offer</label>
+                    <textarea type="text" #desc="ngModel" required class="form-control" id="textarea" rows="3" cols="3" name="offerDesc" ngModel placeholder="Describe offer"></textarea>
+                    <small> <span class="text-danger" *ngIf="desc.invalid && desc.touched">Offer description is must</span></small>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="offerDiscountPercentage">Discount offering</label>
+                    <input type="number" class="form-control" #discount="ngModel" required name="offerDiscountPercentage" ngModel
+                        placeholder="Enter offer discount percentage">
+                        <small> <span class="text-danger" *ngIf="discount.invalid && discount.touched">Please provide offer discount</span></small>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="startDate">Start Date</label>
+                    <input type="date" class="form-control" name="startDate" ngModel
+                        placeholder="Enter offer start-date">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="endDate">End Date</label>
+                    <input type="date" class="form-control" name="endDate" ngModel placeholder="Enter offer end-date">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="image">Offer Image</label>
+                    <input type="file" class="form-control" name="image" (change)="onFileChanged($event)">
+                </div>
+            </div>
+            <span class="text-danger">{{message}}</span>
+        </div>
+        <p style="text-align: right;"><button type="submit" [disabled]="!myform.form.valid"
+                class="btn btn-primary">Submit</button></p>
+    </form>
+</div>
+</div>

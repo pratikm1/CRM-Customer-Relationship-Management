@@ -1,0 +1,123 @@
+<div class="col">
+    <div class="col-md-2">
+        <app-admin-home></app-admin-home>
+    </div>
+    <div class="col-md-10 top-margin-div">
+        <section class="reg">
+            <div class="container">
+
+                <form #myform="ngForm" (ngSubmit)="updateCustomer(myform.value)" class="form-border">
+                    <div class="row">
+                        <legend class="form-legend">Customer Details Update</legend>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="Full Name">Full Name:</label>
+                                <input required #name="ngModel" type="text" class="form-control" name="username"
+                                    [(ngModel)]="username" placeholder="Enter Full Name">
+                                <small> <span class="text-danger" *ngIf="name.invalid">Username is
+                                        must</span></small>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="Mobile Number">Mobile Number:</label>
+                                <input type="text" class="form-control" #phNumber="ngModel" name="phoneNumber"
+                                    [(ngModel)]="phoneNumber" placeholder="Enter Mobile Number" pattern="[0-9]{10}"
+                                    required>
+                                <small> <span class="text-danger" *ngIf="phNumber.invalid">Phone
+                                        number is required & should be of 10 digits</span></small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="Email Id">Email Id:</label>
+                                <input type="email" #mail="ngModel" pattern="[^ @]*@[^ @]*.com" class="form-control"
+                                    name="email" [(ngModel)]="email" placeholder="Enter Email Id" required>
+                                <small> <span class="text-danger" *ngIf="mail.invalid">Enter correct
+                                        Email</span></small>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="Address">Address:</label>
+                                <input type="text" #addr="ngModel" class="form-control" name="address"
+                                    [(ngModel)]="address" placeholder="Enter Address" required>
+                                <small> <span class="text-danger" *ngIf="addr.invalid">Address is
+                                        must</span></small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="dob">Date of Birth</label>
+                                <input type="date" class="form-control" name="dob" [(ngModel)]="dob"
+                                    placeholder="Enter Date of Birth">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="State">State:</label>
+                                <input type="text" class="form-control" name="state" [(ngModel)]="state"
+                                    placeholder="Enter State">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="City">City:</label>
+                                <input type="text" class="form-control" name="city" [(ngModel)]="city"
+                                    placeholder="Enter City">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="Pincode">Pincode:</label>
+                                <input type="text" class="form-control" #code="ngModel" pattern="[0-9]{6}"
+                                    name="pincode" [(ngModel)]="pincode" placeholder="Enter Pincode" required>
+                                <small> <span class="text-danger" *ngIf="code.invalid">Pincode must be
+                                        of 6 digits</span></small>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="Password">Password:</label>
+                                <input type="password" class="form-control" #pwd="ngModel" minlength="8" maxlength="12"
+                                    name="password" [(ngModel)]="password" placeholder="Enter Password" required>
+                                <small><span class="text-danger" *ngIf="pwd.invalid">Password min length
+                                        8 and max length
+                                        12</span></small>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <!-- <input type="hidden" class="form-control" name="role" ngModel value="CUSTOMER"> -->
+                                <label for="role">Choose Role:</label>
+                                <select id="role" class="form-select form-control" #rol="ngModel" name="role"  [(ngModel)]="role" required>
+                                    <option value="ADMIN">ADMIN</option>
+                                    <option value="CUSTOMER">CUSTOMER</option>
+                                </select>
+                                <small><span class="text-danger" *ngIf="rol.invalid">Choose a role</span></small> 
+            
+                            </div>
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+
+                    <p style="text-align: right;"><button type="submit" [disabled]="!myform.form.valid"
+                            class="btn btn-primary">Update</button></p>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>

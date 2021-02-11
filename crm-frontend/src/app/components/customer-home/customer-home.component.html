@@ -1,0 +1,43 @@
+    
+<section>
+<div class="col-md-12">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" style="letter-spacing: 5px;" href="/">CRM-Tool</a>
+        <div class="container-fluid">
+            <div style="margin-right: -30%;">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a routerLink="/test-ride" class="nav-a"><span
+                                class="glyphicon glyphicon-road right-padding-nav"></span> Test-Ride</a></li>
+                    <li><a routerLink="/get-quote" class="nav-a"><span
+                                class="glyphicon glyphicon-print right-padding-nav"></span> Get Quotation</a></li>
+                    <li><a routerLink="/book-vehicle" class="nav-a"><span
+                                class="glyphicon glyphicon-log-in right-padding-nav"></span> Buy Now</a></li>
+                    <li><a routerLink="/register-complaint" class="nav-a"><span
+                                class="glyphicon glyphicon-log-in right-padding-nav"></span> Register complaint</a></li>
+                    <!-- <li><a routerLink="/login"><span class="glyphicon glyphicon-log-in"> Feeback</span></a></li> -->
+                    <!-- <li><a routerLink="/login"><span class="glyphicon glyphicon-log-in"> Update Info</span></a></li> -->
+                    <li><a (click)="logout()" class="nav-item" class="nav-a"><span
+                                class="glyphicon glyphicon-log-out right-padding-nav"></span> Log out</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+</section>
+    <section>
+        <div class="testimonial-row">
+            <div class="testimonial-col">
+                <div class="user">
+                    <div class="user-info">
+                        <div class="card-body">
+                            <h5 class="card-title h3 bbbox"> Hello, {{name}}</h5>
+                            <p class="card-text">Enjoy our services!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    </section>
+

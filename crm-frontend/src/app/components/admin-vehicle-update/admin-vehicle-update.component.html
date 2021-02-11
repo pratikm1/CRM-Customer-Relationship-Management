@@ -1,0 +1,137 @@
+<!-- 
+   {
+        "modelName": "NEW JUPITER",
+        "vehicleNumber": null,
+        "qty": 10,
+        "regPrice": 300000.0,
+        "exShowRoomPrice": 50000.0,
+        "price": 50000.0,
+        "colour": "PINK",
+        "mileage": 40.0,
+        "cc": 50.0,
+        "fuelcap": 6.5,
+        "torque": 120.0,
+        "image": null
+    }
+    
+ -->
+ <div class="col">
+    <div class="col-md-2">
+        <app-admin-home></app-admin-home>
+    </div>
+
+ <div class="col-md-10 top-margin-div">
+    
+    <form #myform="ngForm" (ngSubmit)="updateVehicle(myform.value)" class="form-border">
+        <div class="row">
+            <legend class="form-legend">Update Vehicle Details</legend>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="modelName">Model Name</label>
+                    <input type="text" class="form-control" #model="ngModel" required name="modelName" [(ngModel)]="modelName" placeholder="Enter model Name">
+                    <small> <span class="text-danger" *ngIf="model.invalid">Model name is must & should be unique</span></small>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="vehicleNumber">Vehicle Number</label>
+                    <input type="text" class="form-control" name="vehicleNumber" [(ngModel)]="vehicleNumber"
+                        placeholder="Enter Vehicle Number if available">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="qty">Quantity</label>
+                    <input type="number" #qt="ngModel" required class="form-control" name="qty" [(ngModel)]="qty" placeholder="Enter available quantity">
+                    <small> <span class="text-danger" *ngIf="qt.invalid">Please enter quantity available in stocks</span></small>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="regPrice">Registration Price</label>
+                    <input type="number"  #reg="ngModel" required class="form-control" name="regPrice" [(ngModel)]="regPrice"
+                        placeholder="Enter registration price">
+                        <small> <span class="text-danger" *ngIf="reg.invalid">Registration price is must</span></small>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="exShowRoomPrice">Ex-showroom price</label>
+                    <input type="number" #exShowRoom="ngModel" required class="form-control" name="exShowRoomPrice" [(ngModel)]="exShowRoomPrice"
+                        placeholder="Enter ex-showroom price">
+                        <small> <span class="text-danger" *ngIf="exShowRoom.invalid">Ex-showroom price is must</span></small>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="price">Total price</label>
+                    <input type="number" readonly class="form-control" name="price" 
+                        value="{{myform.value.exShowRoomPrice+myform.value.regPrice}}"
+                        placeholder="Total On Road price" ngModel/>
+                </div>
+                <!--  -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="colour">Choose colour:</label>
+                <select id="offerId" class="form-select form-control" #col="ngModel" required name="colour" [(ngModel)]="colour">
+                    <option *ngFor="let y of colorList" value="{{ y }}">{{ y }}</option>
+                </select>
+                <small> <span class="text-danger" *ngIf="col.invalid">Please choose colour</span></small>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="mileage">Mileage</label>
+                    <input type="number" class="form-control" #mil="ngModel" required name="mileage" [(ngModel)]="mileage" placeholder="Enter mileage">
+                    <small> <span class="text-danger" *ngIf="mil.invalid">Please enter mileage</span></small>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="cc">Cubic Capacity(CC)</label>
+                    <input type="number" class="form-control" #c="ngModel" required name="cc" [(ngModel)]="cc" placeholder="Enter CC">
+                    <small> <span class="text-danger" *ngIf="c.invalid">Please enter Cubic Capacity</span></small>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="fuelcap">Fuel capacity</label>
+                    <input type="number" class="form-control" #fuelc="ngModel" required name="fuelcap" [(ngModel)]="fuelcap" placeholder="Enter fuel capacity">
+                    <small> <span class="text-danger" *ngIf="fuelc.invalid">Please enter fuel capacity</span></small>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="torque">Torque</label>
+                    <input type="number" class="form-control" #tor="ngModel" required name="torque" [(ngModel)]="torque" placeholder="Enter torque">
+                    <small> <span class="text-danger" *ngIf="tor.invalid">Please enter torque</span></small>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="image">Display Image</label>
+                    <!-- accept="image/*" -->
+                    <input type="file" class="form-control" name="image" (change)="onFileChanged($event)">
+                </div>
+            </div>
+        </div>
+
+
+
+        <p style="text-align: right;"><button type="submit" [disabled]="!myform.form.valid" class="btn btn-primary">Update</button></p>
+    </form>
+</div>
+</div>

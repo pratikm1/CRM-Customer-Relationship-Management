@@ -1,0 +1,11 @@
+.footer {
+    background: grey;
+    color: white;
+    padding: 41px;
+    text-align: center;
+}
+
+.copyright {
+    background: black;
+    color: white;
+}

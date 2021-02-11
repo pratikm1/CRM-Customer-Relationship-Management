@@ -1,0 +1,70 @@
+<!-- 
+       {
+        "vehicleId": 1,
+        "modelName": "TVS JUPITER",
+        "vehicleNumber": null,
+        "qty": 10,
+        "regPrice": 25000.0,
+        "exShowRoomPrice": 50000.0,
+        "price": 50000.0,
+        "colour": "WHITE",
+        "mileage": 25.0,
+        "cc": 100.0,
+        "fuelcap": 5.5,
+        "torque": 100.0,
+        "image": null
+    
+ -->
+ <div class="col">
+    <div class="col-md-2">
+        <app-admin-home></app-admin-home>
+    </div>
+<div class="col-md-10" style="margin-top: 10%;">
+    <button type="button" [routerLink]="['/admin-add-new-vehicle']" style="margin-bottom: 20px;" class="btn btn-primary float-right"><span class="glyphicon glyphicon-plus"></span> Add Vehcile</button>
+
+    <table class="table table-striped table-hover table-bordered">
+        <tr>
+            <th scope="col">Vehicle ID</th>
+            <th scope="col">Model Name</th>
+            <th scope="col">Vehicle Number</th>
+            <th scope="col">Available Quantity</th>
+            <th scope="col">Ex-showroom price</th>
+            <th scope="col">Registration price</th>
+            <th scope="col">Price</th>
+            <th scope="col">Colour</th>
+            <th scope="col">Mileage</th>
+            <th scope="col">CC</th>
+            <th scope="col">Fuel Cap</th>
+            <th scope="col">Torque</th>
+            <th scope="col">Image</th>
+            <th colspan="2" style="text-align:center" scope="colgroup">Operations</th>
+        </tr>
+        <tbody>
+        <tr scope="row" *ngFor="let vehicle of vehicleList | paginate: { id:'listing', itemsPerPage:5,
+        currentPage: page }">
+            <td>{{ vehicle.vehicleId }}</td>
+            <td>{{ vehicle.modelName }}</td>
+            <td>{{ vehicle.vehicleNumber }}</td>
+            <td>{{ vehicle.qty }}</td>
+            <td>{{ vehicle.exShowRoomPrice }}</td>
+            <td>{{ vehicle.regPrice }}</td>
+            <td>{{ vehicle.price }}</td>
+            <td>{{ vehicle.colour }}</td>
+            <td>{{ vehicle.mileage }}</td>
+            <td>{{ vehicle.cc }}</td>
+            <td>{{ vehicle.fuelcap }}</td>
+            <td>{{ vehicle.torque }}</td>
+            <!-- <td>{{ vehicle.image }}</td> -->
+            <td><img width="200px" height="100px" src="data:image/jpeg;base64,{{ vehicle.image }}" alt="Image Name:{{ vehicle.modelName }}"></td>
+            <td><button type="button" (click)="updateVehicleDetails(vehicle)" class="btn btn-warning glyphicon glyphicon-pencil"></button></td>
+            <td><button type="button" (click)="removeVehicle(vehicle.modelName)" class="btn btn-danger glyphicon glyphicon-trash"></button></td>
+        </tr>
+        </tbody>
+    </table>
+    <div>
+        <pagination-controls id="listing" maxSize="10" directionLinks="true" (pageChange)="page=$event">
+        </pagination-controls>
+    </div>
+</div>
+
+</div>
